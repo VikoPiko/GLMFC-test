@@ -13,6 +13,8 @@
 #define IDC_EDIT2                       1005
 #define ID_VIEW_DIALOG                  32773
 #define ID_VIEW_SWAP                    32774
+#define ID_SWAP_WIRE                    32775
+#define ID_SWAP_SOLID                   32776
 
 // Next default values for new objects
 // 
@@ -20,7 +22,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
 #define _APS_NEXT_RESOURCE_VALUE        132
-#define _APS_NEXT_COMMAND_VALUE         32775
+#define _APS_NEXT_COMMAND_VALUE         32777
 #define _APS_NEXT_CONTROL_VALUE         1006
 #define _APS_NEXT_SYMED_VALUE           103
 #endif

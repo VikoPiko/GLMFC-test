@@ -32,6 +32,7 @@ public:
 	virtual void OnDraw(CDC* pDC);  // overridden to draw this view
 	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
 	//}}AFX_VIRTUAL
+	void Spin(UINT nChar);
 
 // Implementation
 public:

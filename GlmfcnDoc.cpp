@@ -42,8 +42,8 @@ BOOL CGlmfcnDoc::OnNewDocument()
 {
 	if (!CDocument::OnNewDocument())
 		return FALSE;
-	radius = 0.5;
-	height = 0.7;
+	radius = 0.6;
+	height = 0.6;
 	red = 1.0f; green = 1.0f; blue = 1.0f;
 
 	// TODO: add reinitialization code here

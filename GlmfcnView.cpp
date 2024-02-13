@@ -19,8 +19,8 @@
 static char THIS_FILE[] = __FILE__;
 #endif
 
-float sphereSize = 0.7f;
-float r = 1.0f, g = 1.0f, b = 1.0f;
+float sphereSize = 2.0f;
+float r = 0.3f, g = 0.5f, b = 1.0f;
 bool useCylinder = true;
 
 /////////////////////////////////////////////////////////////////////////////
@@ -231,18 +231,19 @@ void CGlmfcnView::OnDraw(CDC* pDC)
 	CGlmfcnDoc* pDoc = GetDocument();
 	ASSERT_VALID(pDoc);
 	// TODO: add draw code for native data here
-//	glClearColor(0.1, 0.1, 0.1, 0.0);
+	glClearColor(0.1, 0.1, 0.1, 1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	// Clear Screen And Depth Buffer
 	glLoadIdentity();									// Reset The Current Modelview Matrix
 	
-    glTranslatef(1, 0.5, 0);
-    glRotatef(30, 0, 1, 0);
+    glTranslatef(2, 0.5f, 0);
+    glRotatef(60, 0.5f, 1, 0);  
     glColor3f(pDoc->red, pDoc->green, pDoc->blue);
+    //glColor3f(0.5f, 0.3f, 0.7f);
 
     GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
     GLfloat mat_dif[] = { 1.0, 1.0, 1.0, 1.0 };
-    GLfloat mat_shininess[] = { 30.0 }; 
-    GLfloat light_position[] = { 0, 1.0, 0.5, 0.0 }; // x y z w positions
+    GLfloat mat_shininess[] = { 40.0 }; 
+    GLfloat light_position[] = { 0.3, 0.7, 1.0f, 0.1 }; // x y z w positions
 
     glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
     glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_dif);
@@ -254,15 +255,19 @@ void CGlmfcnView::OnDraw(CDC* pDC)
     glEnable(GL_DEPTH_TEST);
 
     //GL_LIGHT0();
-    
+
     if (useCylinder)
+    {
+        //auxWireSphere(0.5f);
         auxSolidCylinder(pDoc->radius, pDoc->height);
-    else
+    }
+    else if (!useCylinder)
         //auxSolidSphere(pDoc->radius);
         auxWireCylinder(pDoc->radius, pDoc->height);
     // auxWireTeapot()
 
 	BOOL ok=SwapBuffers(m_hDC);
+    Invalidate();
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -361,7 +366,7 @@ void CGlmfcnView::OnViewDialog()
 void CGlmfcnView::OnViewSwap()
 {
     // TODO: Add your command handler code here
-    useCylinder = !useCylinder; // ?
-
+    useCylinder = !useCylinder; // swaps state; if true, make false and vice versa
     Invalidate();
 }
+
